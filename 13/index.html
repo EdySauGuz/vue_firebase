@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-Firebase Course</title>
+</head>
+<body>
+    <main>
+        <h1>Ganador</h1>
+        <elegir-ganador :listado="personas" inline-template>
+            <div>
+                <h1 v-if="ganador">El ganador es {{ ganador }}</h1>
+                <template v-else>
+                    <h1>Participantes</h1>
+                    <ul>
+                        <li v-for="persona in listado" v-text="persona"></li>
+                    </ul>
+                </template>
+                <button @click="elegirGanador()">Elegir Ganador</button>
+            </div>
+        </elegir-ganador>
+        <pre>{{ $data }}</pre>
+    </main>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <template id="elegir-ganador-template">
+        <div>
+            <h1 v-if="ganador">El ganador es {{ ganador }}</h1>
+            <template v-else>
+                <h1>Participantes</h1>
+                <ul>
+                    <li v-for="persona in listado" v-text="persona"></li>
+                </ul>
+            </template>
+            <button @click="elegirGanador()">Elegir Ganador</button>
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- Respetar este orden para instanciar Axios-->
+    <script src="js/main.js"></script>
+</body>
+</html>

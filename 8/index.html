@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-Firebase Course</title>
+
+    <style>
+        li{
+            cursor: pointer;
+        }
+        .completado{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Tareas</h1>
+        <h2>{{ tareasCompletadas.length }} completadas de {{ tareas.length }}</h2>
+        <ul>
+            <!-- v-bind:class >>> :class, v-on:click >>> @click -->
+            <li :class="{completado: tarea.completado}" 
+                @click="completarTarea(tarea)" 
+                v-for="tarea in tareas">
+               {{ tarea.titulo }}
+            </li>
+        </ul>
+        <!-- <input type="text" placeholder="Introduce una tarea" v-model="nuevaTarea">
+        <input type="button" value="Enviar Tarea" v-on:click="agregarTarea"> -->
+        <form v-on:submit.prevent="agregarTarea">
+            <input type="text" placeholder="Introduce una tarea" v-model="nuevaTarea">
+            <input type="submit" value="Enviar Tarea">
+        </form>
+        <pre>{{ $data }}</pre>
+    </main>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
